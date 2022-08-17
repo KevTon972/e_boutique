@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakersofficiel</title>
+</head>
+<body>
+    <header>
+        <a href="{% url 'index' %}"><h1>get your sneakers</h1></a>
+        {% if user.is_authenticated %}
+            <h2>{{ user.username }}</h2>
+            <a href="{% url 'logout' %}">deconnexion</a>
+        {% else %}
+            <a href="{% url 'login' %}">connexion</a>
+            <a href="{% url 'signup' %}">s'inscrire</a>
+        {% endif %}
+
+        {% if user.cart %}
+        <p>
+            <a href="{% url 'cart' %}">panier ({{ user.cart.orders.count }})</a>
+        </p>
+        {% endif %}
+
+    </header>
+    {% block content %}
+
+    {% endblock %}
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

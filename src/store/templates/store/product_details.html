@@ -1,0 +1,28 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+    <h2>{{ product.name }}</h2>
+    <h3>{{ product.price }} e</h3>
+    <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width: 500px;">
+    <!-- boucler pour afficher les pointures disponibles -->
+    <div class="size">
+        {% for size in sizes %}
+            <p id="{{ size }}" class="taille" style="cursor:pointer;" style="background-color:aqua" >
+                {{ size }}
+            </p>
+        {% endfor %}
+    </div>
+    <p>{{ product.description }}</p>
+
+    <p>{{ product.stock }} en stock</p>
+    
+    {% if user.is_authenticated %}
+    <p>
+        <a href="{% url 'add_to_cart' product.slug %}">
+            Ajouter dans le panier
+        </a>
+    </p>    
+    {% endif %}
+
+{% endblock %}

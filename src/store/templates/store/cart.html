@@ -1,0 +1,34 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+{% if orders %}
+{% for order in orders %}
+<div id="order_list" class="article">
+    <h2>{{ order.product.name }}</h2>
+    <img src="{{ order.product.thumbnail.url }}" alt="{{ order.product.name }}" style="max-width: 500px;">
+    <a href="{% url 'product' order.product.slug %}">
+        voir l'article
+    </a>  
+    <p>
+        {{ order.quantity }} dans le panier
+    </p>
+</div>
+<div id="remove" itemclass="remove">
+    <a href="{% url 'delete_to_cart' order.pk  %}"   
+    >supprimer l'article
+    </a>
+    <a href="{% url 'delete_cart' %}">
+        supprimer le panier
+    </a>
+</div>
+{% endfor %}
+{% else %}
+<div>
+    <h1>
+        votre panier est vide
+    </h1>
+</div>
+{% endif %}
+
+{% endblock %}
