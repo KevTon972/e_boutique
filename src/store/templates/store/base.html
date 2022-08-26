@@ -5,29 +5,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>Sneakersofficiel</title>
 </head>
 <body>
     <header>
-        <a href="{% url 'index' %}"><h1>get your sneakers</h1></a>
-        {% if user.is_authenticated %}
-            <h2>{{ user.username }}</h2>
-            <a href="{% url 'logout' %}">deconnexion</a>
-        {% else %}
-            <a href="{% url 'login' %}">connexion</a>
-            <a href="{% url 'signup' %}">s'inscrire</a>
-        {% endif %}
-
-        {% if user.cart %}
-        <p>
-            <a href="{% url 'cart' %}">panier ({{ user.cart.orders.count }})</a>
-        </p>
-        {% endif %}
-
+        <nav class="nav">
+            <div class="top">
+                <div class="top-left">
+                    <a href="{% url 'index' %}"><h1>get your sneakers</h1></a>
+                </div>
+                
+                <div class="top-right">
+                    {% if user.is_authenticated %}
+                    <div class="user_name">
+                        <h2>{{ user.username }}</h2>
+                    </div>  
+                    {% if user.cart %}
+                    <div class="cart">
+                        <a href="{% url 'cart' %}">panier ({{ user.cart.orders.count }})</a>
+                    </div>
+                    {% endif %}
+                    <div class="deco">
+                        <a href="{% url 'logout' %}">deconnexion</a>
+                    </div>             
+                    {% else %}
+                    <div class="co"><a href="{% url 'login' %}">                        connexion</a>
+                    </div>
+                    <div class="login">
+                        <a href="{% url 'signup' %}">s'inscrire</a>
+                    </div>
+                    
+                    {% endif %}
+                    
+                </div>
+        
+            </div>
+        </nav>
+        
     </header>
     {% block content %}
 
     {% endblock %}
+    <footer class="footer">
+        <div class="all">
+            <div class="contact">
+                <h2>
+                    contact me
+                </h2>
+            </div>
+            <div class="social">
+                <h2>
+                    reseaux sociaux
+                </h2>
+            </div>
+        </div>
+    </footer>
     <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>

@@ -1,13 +1,20 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
+<div class="all-product">
+    {% for product in products %}
+    <div class="product">
+        
+        <div class="details">
+            <a href="{{ product.get_absolute_url }}">
+                <h2>{{ product.name }}</h2>
+            </a>
+            <p>{{ product.price }}€</p>
+        </div>
+        <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}";">
+    </div>
+    {% endfor %}
+</div>
 
-{% for product in products %}
-
-    <h2>{{ product.name }}</h2>
-    <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width: 500px;">
-    <a href="{{ product.get_absolute_url }}">voir l'article</a>
-
-{% endfor %}
 
 {% endblock %}

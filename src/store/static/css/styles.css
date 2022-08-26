@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Lobster&display=swap');
+
+*{
+    font-family: 'Libre Baskerville', serif;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+.nav .top{
+    display: flex;
+    padding: 35px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: whitesmoke;
+}
+
+.nav .top a{
+    color: whitesmoke;
+    transform: none;
+}
+
+.nav .top h1{
+    text-transform: uppercase;
+    margin-right: 30px;
+    letter-spacing: 1px;
+}
+
+.top-left{
+    margin-left: 0%;
+}
+
+.top-right{
+    display: flex;
+    margin-right: 0;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+}
+
+.all-product{
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product{
+    margin-top: 10vh;
+    display: grid;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 8px;
+    width: 362px;
+    position: relative;
+}
+
+.product h2{
+    margin-bottom: 10px;
+    color: black;
+    left: 0;
+}
+
+.product a{
+    margin-top: 15px;
+}
+
+.product img{
+    margin-top: 9vh;
+    margin-bottom: 5vh;
+    max-height: 230px;
+    width: 346px;
+}
+
+.details{
+    position: absolute;
+    top: 0;
+    padding-left: 15px;
+}

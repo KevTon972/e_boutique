@@ -19,6 +19,7 @@ def product_details(request, slug):
 def add_to_cart(request, slug): #size
     user = request.user
     product = get_object_or_404(Product, slug=slug,)
+    # size = get_object_or_404(Product, size=size,)
     cart, _ = Cart.objects.get_or_create(user=user)
     order, created = Order.objects.get_or_create(user=user, product=product)#size=size
 

@@ -13,6 +13,9 @@
     <p>
         {{ order.quantity }} dans le panier
     </p>
+    <p>
+        {{ order.size }}
+    </p>
 </div>
 <div id="remove" itemclass="remove">
     <a href="{% url 'delete_to_cart' order.pk  %}"   
