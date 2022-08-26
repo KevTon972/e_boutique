@@ -1,28 +1,39 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
+    <div class="product-details">
+        <div class="top-details">
+            <h2>{{ product.name }}</h2>
+            <h3>{{ product.price }}€</h3>
+            <div class="product-img">
+                <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width: 650px;">
+            </div>
+        </div>
+        <!-- boucler pour afficher les pointures disponibles -->
+        <div class="right-side">
+            <h3>Taille disponible:</h3>
+            <div class="all-size">
+                {% for size in sizes %}
+                <div class="size">
+                    <p style="cursor:pointer;">
+                        {{ size }}
+                    </p>
+                </div>
+            {% endfor %}
+            </div>
+            <p>{{ product.description }}</p>
 
-    <h2>{{ product.name }}</h2>
-    <h3>{{ product.price }} e</h3>
-    <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width: 500px;">
-    <!-- boucler pour afficher les pointures disponibles -->
-    <div id= "size" class="size">
-        {% for size in sizes %}
-            <p style="cursor:pointer;">
-                {{ size }}
-            </p>
-        {% endfor %}
+        <p>{{ product.stock }} en stock</p>
+
+        {% if user.is_authenticated %}
+        <p>
+            <a href="{% url 'add_to_cart' product.slug %}">
+                Ajouter dans le panier
+            </a>
+        </p>    
+        {% endif %}
+        </div>
     </div>
-    <p>{{ product.description }}</p>
-
-    <p>{{ product.stock }} en stock</p>
     
-    {% if user.is_authenticated %}
-    <p>
-        <a href="{% url 'add_to_cart' product.slug %}">
-            Ajouter dans le panier
-        </a>
-    </p>    
-    {% endif %}
 
 {% endblock %}

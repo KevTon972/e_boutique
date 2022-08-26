@@ -12,11 +12,10 @@
     justify-content: space-between;
     align-items: center;
     background-color: black;
-    color: whitesmoke;
 }
 
 .nav .top a{
-    color: whitesmoke;
+    color: black;
     transform: none;
 }
 
@@ -24,6 +23,11 @@
     text-transform: uppercase;
     margin-right: 30px;
     letter-spacing: 1px;
+    color: whitesmoke;
+}
+
+.nav .top h2{
+    color: whitesmoke;
 }
 
 .top-left{
@@ -36,6 +40,20 @@
     align-items: center;
     justify-content: center;
     width: 25%;
+}
+
+.top-right a{
+    background-color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 6px;
+}
+
+.top-right a:hover{
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    background-color: black;
+    
 }
 
 .all-product{
@@ -56,6 +74,13 @@
     padding: 8px;
     width: 362px;
     position: relative;
+    border: 2px solid white;
+    border-radius: 25px;
+    margin-bottom: 2vh;
+}
+
+.product:hover{
+    border: 2px solid black;
 }
 
 .product h2{
@@ -73,10 +98,58 @@
     margin-bottom: 5vh;
     max-height: 230px;
     width: 346px;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
 .details{
     position: absolute;
     top: 0;
     padding-left: 15px;
+}
+
+footer{
+    background-color: black;
+    margin-top: 10vh;
+    height: 350px;
+}
+
+.all{
+    display: flex;
+    color: whitesmoke;
+}
+
+.product-details{
+    margin-top: 10vh;
+    display: flex;
+}
+
+.top-details{
+    margin-bottom: 3vh;
+}
+
+.product-img img{
+    max-width: 650px;
+    border: 5px solid black;
+}
+
+.right-side{
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.all-size{
+    display: flex;
+    align-items: center;
+}
+
+.size{
+    margin: 20px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 19px;
 }
