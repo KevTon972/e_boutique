@@ -6,8 +6,10 @@
             <h2>{{ product.name }}</h2>
             <h3>{{ product.price }}€</h3>
             <div class="product-img">
-                <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width: 650px;">
+                <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width: 650px; max-height: 350px;">
             </div>
+            <h3>Description:</h3><br>
+            <p>{{ product.description }}.</p>
         </div>
         <!-- boucler pour afficher les pointures disponibles -->
         <div class="right-side">
@@ -21,16 +23,15 @@
                 </div>
             {% endfor %}
             </div>
-            <p>{{ product.description }}</p>
-
-        <p>{{ product.stock }} en stock</p>
-
+        <div class="en-stock">
+            <h3>{{ product.stock }} en stock</h3>
+        </div>
         {% if user.is_authenticated %}
-        <p>
+        <div class="panier">
             <a href="{% url 'add_to_cart' product.slug %}">
                 Ajouter dans le panier
             </a>
-        </p>    
+        </div>  
         {% endif %}
         </div>
     </div>
