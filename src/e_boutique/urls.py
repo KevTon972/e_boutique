@@ -18,9 +18,10 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from e_boutique import settings
 
+
 urlpatterns = [
     path('', include('store.urls')),
     path('', include('accounts.urls')),
+    path('', include('payments.urls')),
     path('admin/', admin.site.urls),
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

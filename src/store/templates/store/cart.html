@@ -14,18 +14,22 @@
         {{ order.quantity }} dans le panier
     </p>
     <p>
+        {{ order_price }}€
+    </p>
+    <p>
         {{ order.size }}
     </p>
 </div>
 <div id="remove" itemclass="remove">
-    <a href="{% url 'delete_to_cart' order.pk  %}"   
-    >supprimer l'article
-    </a>
+    <a href="{% url 'delete_to_cart' order.pk  %}" >
+        {% csrf_token %}
+        supprimer l'article
+</a>
+</div>
+{% endfor %}
     <a href="{% url 'delete_cart' %}">
         supprimer le panier
     </a>
-</div>
-{% endfor %}
 {% else %}
 <div>
     <h1>
@@ -33,5 +37,12 @@
     </h1>
 </div>
 {% endif %}
+<p>
+    Total: {{ total_price }}€
+</p>
+<form action="{% url 'create-checkout-session' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" id="checkout-button">Checkout</button>
+  </form>
 
 {% endblock %}

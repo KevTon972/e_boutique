@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'accounts',
+    'payments',
     
 ]
 
@@ -125,3 +126,6 @@ STATICFILES_DIRS = [BASE_DIR / 'static/']
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / 'store/media'
 AUTH_USER_MODEL = "accounts.Shopper"
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51Lg1P3Can1oeBjpneceAIVucLyf2YTxoXXql8U0OT7hrpMVOiHnR1i5ZBXpFQYdH2nrCPFjg8qReXTJcPHNgLLcd00EeylvkNU'
+STRIPE_SECRET_KEY = 'sk_test_51Lg1P3Can1oeBjpn7tDiPNEqRNOEgdflSxfH5nl56TWU2UsPFAY9idCYumOG0AzR5ZEen5IglF8OZKDgM5CSscVD00CY38EdoQ'
+BASE_URL= 'http://127.0.0.1:8000'

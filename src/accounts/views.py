@@ -26,7 +26,7 @@ def login_user(request):
             login(request, user)
             return redirect('index')
             
-    return render(request, 'accounts/signup.html')
+    return render(request, 'accounts/connexion.html')
 
 
 

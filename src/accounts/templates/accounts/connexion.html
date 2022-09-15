@@ -1,18 +1,24 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
-    <h1>connexion/h1>
-    <form enctype="multipart/form-data" action="" method="POST">
-        {% csrf_token %}
-        <p>
-            <label for="username">Nom d'utilisateur</label>
-            <input type="text" name="username" id="username">
-        </p>
-        <p>
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password">
-        </p>
-        <button type="submit">connexion</button>
-    </form>
+<div class="signup">
+    <div class="title-signup">
+        <h1>Connexion</h1>
+    </div>
+    <div class="form">
+        <form enctype="multipart/form-data" action="" method="POST">
+            {% csrf_token %}
+            <div class="name">
+                <label for="username">Nom d'utilisateur: </label>
+                <input type="text" name="username" id="username">
+            </div>
+            <div class="password">
+                <label for="password">Mot de passe: </label>
+                <input type="password" name="password" id="password">
+            </div>
+            <button type="submit">Connexion</button>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

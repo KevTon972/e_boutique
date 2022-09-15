@@ -181,3 +181,48 @@ footer{
 .panier a:hover{
     color: black;
 }
+
+.signup{
+    display: grid;
+    margin-top: 10vh;
+    flex-wrap: wrap;
+}
+
+.title-signup{
+    display: flex;
+    margin-bottom: 5vh;
+}
+
+.name{
+    display: grid;
+    margin-bottom: 4vh;
+}
+
+.password{
+    display: grid;
+    margin-bottom: 6vh;
+}
+
+.form input{
+    width: 350px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.form button{
+    display: flex;
+    padding: 15px;
+    width: 350px;
+    background-color: black;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    border-radius: 25px;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+.form button:hover{
+    background-color: whitesmoke;
+    color: black;
+    border: 2px solid black;
+}
