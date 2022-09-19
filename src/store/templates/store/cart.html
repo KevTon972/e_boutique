@@ -4,45 +4,58 @@
 
 {% if orders %}
 {% for order in orders %}
-<div id="order_list" class="article">
-    <h2>{{ order.product.name }}</h2>
-    <img src="{{ order.product.thumbnail.url }}" alt="{{ order.product.name }}" style="max-width: 500px;">
-    <a href="{% url 'product' order.product.slug %}">
-        voir l'article
-    </a>  
-    <p>
-        {{ order.quantity }} dans le panier
-    </p>
-    <p>
-        {{ order_price }}€
-    </p>
-    <p>
-        {{ order.size }}
-    </p>
-</div>
-<div id="remove" itemclass="remove">
-    <a href="{% url 'delete_to_cart' order.pk  %}" >
-        {% csrf_token %}
-        supprimer l'article
-</a>
-</div>
-{% endfor %}
-    <a href="{% url 'delete_cart' %}">
-        supprimer le panier
-    </a>
-{% else %}
-<div>
-    <h1>
-        votre panier est vide
-    </h1>
+<div class="cart">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>product</th>
+                <th>quantity</th>
+                <th>size</th>
+                <th>price</th>
+            </tr>
+        </thead>    
+        <tbody>
+            <tr>
+                <td>
+                    <h4>{{ order.product.name }}</h4>           
+                    <a href="{% url 'product' order.product.slug %}">
+                        <img src="{{ order.product.thumbnail.url }}" alt="{{ order.product.name }}" style="max-width: 500px;">
+                    </a> 
+                    <a href="{% url 'delete_to_cart' order.pk  %}" >
+                        {% csrf_token %}
+                        supprimer l'article
+                    </a>
+                </td>
+                <td>{{ order.quantity }}</td>
+                <td>{{ order.size }}</td>
+                <td>{{ order.price }}€</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endfor %} 
+    <div class="bottom_cart">
+        <div class="cart_price">
+            <h3>
+                Total: {{ total_price }}€
+            </h3>
+        </div>
+        <div class="delete_cart">
+            <a href="{% url 'delete_cart' %}">
+                supprimer le panier
+            </a>
+        </div>
+        <form action="{% url 'create-checkout-session' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" id="checkout-button">Pay Now</button>
+          </form>
+    </div>
+    {% else %}
+    <div class="empty_cart">
+        <h1>
+            votre panier est vide.
+        </h1>
+    </div>
 </div>
 {% endif %}
-<p>
-    Total: {{ total_price }}€
-</p>
-<form action="{% url 'create-checkout-session' %}" method="POST">
-    {% csrf_token %}
-    <button type="submit" id="checkout-button">Checkout</button>
-  </form>
 
 {% endblock %}

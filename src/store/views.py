@@ -21,27 +21,27 @@ def add_to_cart(request, slug):
     user = request.user
     product = get_object_or_404(Product, slug=slug,)
     cart, _ = Cart.objects.get_or_create(user=user)
-    order, created = Order.objects.get_or_create(user=user, product=product)
+    order, created = Order.objects.get_or_create(user=user, product=product, price=product.price)
 
     if created:
         cart.orders.add(order)
         cart.save()
     else:
+        order.price += product.price
         order.quantity += 1
         order.save()
     
     return redirect(reverse("product", kwargs={"slug":slug}))
 
 def cart(request):
-    cart = get_object_or_404(Cart, user=request.user) 
-    total_price = 0
-    for order in cart.orders.all():
-        total_price = total_price + order.product.price * order.quantity
-    
-    order_price = order.product.price * order.quantity
-    
+    cart = get_object_or_404(Cart, user=request.user)    
+    #products = Product.objects.all()
+    if cart:
+        total_price = 0
+        for order in cart.orders.all():
+            total_price += order.price
 
-    return render(request, 'store/cart.html', context={"orders":cart.orders.all(), "order_price": order_price, "total_price": total_price})
+        return render(request, 'store/cart.html', context={"orders":cart.orders.all(), "total_price": total_price})
 
 
 def delete_cart(request):
@@ -49,13 +49,14 @@ def delete_cart(request):
     if cart := request.user.cart:
         cart.orders.all().delete()
         cart.delete()
+
     return redirect('index')
 
 def delete_to_cart(request, pk):
     #remove an item from the cart
-    user = request.user
-    
+    user = request.user    
     if cart := user.cart:
         cart.orders.remove(pk)
-        Order.objects.get(pk=pk).delete()        
-    return render(request, 'store/cart.html', context={"orders":cart.orders.all()})
+        Order.objects.get(pk=pk).delete()   
+
+    return redirect('cart')

@@ -1,6 +1,7 @@
+from dataclasses import replace
 from django.shortcuts import render
 from django.conf import settings
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.views import View
 from django.views.generic import TemplateView
 import stripe
@@ -14,6 +15,14 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 class CreateCheckoutSessionView(View):
 
     def post(self, request, *args, **kwargs):
+        
+        cart = get_object_or_404(Cart, user=request.user) 
+        total = 0
+        for order in cart.orders.all():
+            total += order.price
+        total = str(total)
+        total = total.replace(".", "")
+        total = int(total)
 
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
@@ -21,9 +30,9 @@ class CreateCheckoutSessionView(View):
                 {
                     'price_data': {
                         'currency': 'eur',
-                        'unit_amount': {{ total_price }},
+                        'unit_amount': total,
                         'product_data': {
-                            'name': Cart.orders.id,
+                            'name': f"Commande n° {cart.id}",
                         },
                     },
                     'quantity': 1,

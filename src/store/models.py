@@ -12,7 +12,7 @@ class Product(models.Model):
     name = models.CharField(max_length=128)
     slug = models.CharField(max_length=128)
     sizes = models.ManyToManyField(Size)
-    price = models.FloatField(default=0.0)
+    price = models.FloatField(default=0.00)
     stock = models.IntegerField(default=0)
     description = models.TextField()
     thumbnail = models.ImageField(upload_to="products", blank=True, null=True)
@@ -27,6 +27,7 @@ class Product(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    price = models.FloatField(default=0.00)
     size = models.ForeignKey(Size, on_delete=models.CASCADE, blank=True, null=True)
     quantity = models.IntegerField(default=1)
     ordered = models.BooleanField(default=False)

@@ -5,7 +5,9 @@
     margin: 0 auto;
     text-decoration: none;
 }
-
+.nav{
+    margin-bottom: 6vh;
+}
 .nav .top{
     display: flex;
     padding: 35px;
@@ -112,7 +114,7 @@
 footer{
     background-color: black;
     margin-top: 10vh;
-    height: 350px;
+    height: 320px;
 }
 
 .all{
@@ -225,4 +227,74 @@ footer{
     background-color: whitesmoke;
     color: black;
     border: 2px solid black;
+}
+
+.table{
+    border-collapse: collapse;
+    width: 900px;
+    box-shadow: 0 5px 50px rgba(0,0,0,0.15);
+    border: 2px solid black;
+
+}
+
+thead tr{
+    background-color: #ddd;
+    text-align: center;
+}
+td img{
+    height: 120px;
+    border: 1px solid black;
+    
+}
+
+th, td{
+    padding: 15px 20px;
+    max-width: 120px;
+}
+
+tbody{
+    text-align: center; 
+}
+
+td a{
+    display: flex;
+    justify-content: center;
+    justify-content: grid;
+    margin-top: 8px;
+    color: black;
+    text-decoration: underline black;
+}
+
+.bottom_cart{
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    margin-top: 30px;
+}
+
+.delete_cart a{
+    color: black;
+    text-decoration: underline black;
+    font-weight: bold;
+}
+
+.bottom_cart button{
+    width: 150px;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: black;
+    color: whitesmoke;
+}
+
+.bottom_cart button:hover{
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: black;
+}
+
+.empty_cart{
+    display: flex;
+    justify-content: center;
+    margin: 25vh;
 }
