@@ -30,7 +30,7 @@ class CreateCheckoutSessionView(View):
                 {
                     'price_data': {
                         'currency': 'eur',
-                        'unit_amount': total,
+                        'unit_amount': f"{total}0",
                         'product_data': {
                             'name': f"Commande n° {cart.id}",
                         },

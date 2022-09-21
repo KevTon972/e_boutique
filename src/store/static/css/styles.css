@@ -10,9 +10,8 @@
 }
 .nav .top{
     display: flex;
-    padding: 35px;
-    justify-content: space-between;
     align-items: center;
+    padding: 35px;
     background-color: black;
 }
 
@@ -31,6 +30,11 @@
 
 .nav .top h2{
     color: whitesmoke;
+    margin-right: 50px;
+}
+
+.cart{
+    margin-right: 50px;
 }
 
 .top-left{
@@ -39,24 +43,24 @@
 
 .top-right{
     display: flex;
+    justify-content: grid;
     margin-right: 0;
     align-items: center;
-    justify-content: center;
-    width: 25%;
     flex-wrap: wrap;
+
 }
 
 .top-right a{
     border: 1px solid whitesmoke;
     border-radius: 20px;
     padding: 8px;
+    margin-left: 30px;
 }
 
 .top-right a:hover{
     border: 1px solid whitesmoke;
     color: black;
-    background-color: whitesmoke;
-    
+    background-color: whitesmoke; 
 }
 
 .all-product{
@@ -297,4 +301,62 @@ td a{
     display: flex;
     justify-content: center;
     margin: 25vh;
+}
+
+.all h2{
+    text-transform: capitalize;
+    text-align: center;
+    text-decoration: underline whitesmoke;
+}
+
+.contact_mail h2{
+    margin-top: 50px;
+}
+
+.facebook{
+    text-align: center;
+    margin-top: 7px;
+}
+
+.instagram{
+    text-align: center;
+}
+
+.snap{
+    text-align: center;
+}
+
+.social img{
+    background-color: whitesmoke;
+    border-radius: 15px;
+    height: 70px;
+    margin: 5px;
+}
+
+@media only screen and (max-width: 1168px){
+
+    .cart{
+        margin-right: 0;
+    }
+
+    .nav .top h2{
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 774px){
+    
+    .top-right{
+        display: flex;
+        margin-left: 0;
+        height: 80px;
+        width: 200px;
+    }
+    .top-right a{
+        margin-left: 15px;
+        padding: 4px;
+    }
+    .cart{
+        margin: 0;
+    }
 }

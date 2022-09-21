@@ -25,21 +25,18 @@
                     <div class="cart">
                         <a href="{% url 'cart' %}">panier ({{ user.cart.orders.count }})</a>
                     </div>
-                    {% endif %}
+                    {% endif %}                    
                     <div class="deco">
                         <a href="{% url 'logout' %}">deconnexion</a>
                     </div>             
                     {% else %}
-                    <div class="co"><a href="{% url 'login' %}">                        connexion</a>
+                    <div class="co"><a href="{% url 'login' %}">connexion</a>
                     </div>
                     <div class="login">
                         <a href="{% url 'signup' %}">s'inscrire</a>
                     </div>
-                    
-                    {% endif %}
-                    
-                </div>
-        
+                    {% endif %}                    
+                </div>        
             </div>
         </nav>
         
@@ -50,14 +47,32 @@
     <footer class="footer">
         <div class="all">
             <div class="contact">
-                <h2>
-                    contact me
-                </h2>
+                <div class="contact_title">
+                    <h2>
+                        contact me:
+                    </h2>
+                </div>
+                <div class="contact_mail">
+                    <h2>
+                        Mail@example.com
+                    </h2>
+                </div>
             </div>
             <div class="social">
-                <h2>
-                    reseaux sociaux
-                </h2>
+                 <div class="social_title">
+                    <h2>
+                        reseaux sociaux:
+                    </h2>
+                 </div>
+                <div class="facebook">
+                    <img src="{% static 'image/facebook.png' %}" alt="logo facebook">
+                </div>
+               <div class="instagram">
+                   <img src="{% static 'image/instagram.png' %}" alt="logo instagram">
+               </div>
+               <div class="snap">
+                   <img src="{% static 'image/snapchat.png' %}" alt="logo snapchat">
+               </div>
             </div>
         </div>
     </footer>
