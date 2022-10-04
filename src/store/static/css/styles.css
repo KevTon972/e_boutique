@@ -29,16 +29,12 @@
 }
 
 .nav .top h2{
-    color: whitesmoke;
-    margin-right: 50px;
-}
-
-.cart{
+    color: white;
     margin-right: 50px;
 }
 
 .top-left{
-    margin-left: 0%;
+    margin-left: 0;
 }
 
 .top-right{
@@ -238,6 +234,7 @@ footer{
     width: 900px;
     box-shadow: 0 5px 50px rgba(0,0,0,0.15);
     border: 2px solid black;
+    align-items: center;
 
 }
 

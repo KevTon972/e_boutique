@@ -1,10 +1,9 @@
 
+import json
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from store.models import Cart, Order, Product, Size
-from django.views.decorators.csrf import csrf_exempt
-from django.db.models import F, Sum
-
+from django.http import JsonResponse
 
 def index(request):
     products = Product.objects.all()
@@ -13,14 +12,15 @@ def index(request):
 
 def product_details(request, slug):
     product = get_object_or_404(Product, slug=slug)
+    sizes = Size.objects.all()
         
-    return render(request, 'store/product_details.html', context={'product': product, 'sizes': Size.objects.all()})
+    return render(request, 'store/product_details.html', context={'product': product, 'sizes': sizes})
      
 
 def add_to_cart(request, slug):
     user = request.user
     product = get_object_or_404(Product, slug=slug,)
-    cart, _ = Cart.objects.get_or_create(user=user)
+    cart, _ = Cart.objects.get_or_create(user=user)            
     order, created = Order.objects.get_or_create(user=user, product=product, price=product.price)
 
     if created:

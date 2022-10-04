@@ -18,9 +18,17 @@ class CreateCheckoutSessionView(View):
         
         cart = get_object_or_404(Cart, user=request.user) 
         total = 0
+
         for order in cart.orders.all():
             total += order.price
+
         total = str(total)
+        #si il n'y a qu'un seul chiffre apres la virgule rajouter un 0
+        liste_total = total.split(".")
+
+        if len(liste_total[-1]) == 1:
+            total= total + "0"
+        
         total = total.replace(".", "")
         total = int(total)
 
@@ -30,7 +38,7 @@ class CreateCheckoutSessionView(View):
                 {
                     'price_data': {
                         'currency': 'eur',
-                        'unit_amount': f"{total}0",
+                        'unit_amount': f"{total}",
                         'product_data': {
                             'name': f"Commande n° {cart.id}",
                         },

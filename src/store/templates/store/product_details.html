@@ -17,9 +17,9 @@
             <div class="all-size">
                 {% for size in sizes %}
                 <div class="size">
-                    <p style="cursor:pointer;">
+                    <button id="{{size}}" type="submit" onclick="RequeteAjax()">
                         {{ size }}
-                    </p>
+                    </button>
                 </div>
             {% endfor %}
             </div>
@@ -36,5 +36,4 @@
         </div>
     </div>
     
-
 {% endblock %}
