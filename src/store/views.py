@@ -18,19 +18,22 @@ def product_details(request, slug):
      
 
 def add_to_cart(request, slug):
-    user = request.user
-    product = get_object_or_404(Product, slug=slug,)
-    cart, _ = Cart.objects.get_or_create(user=user)            
-    order, created = Order.objects.get_or_create(user=user, product=product, price=product.price)
+    #size = get_object_or_404(Size, size=size)
+    if request.method == "GET":
+        size = request.GET.get('button.id')
+        user = request.user
+        product = get_object_or_404(Product, slug=slug,)
+        cart, _ = Cart.objects.get_or_create(user=user)   
+        order, created = Order.objects.get_or_create(user=user, product=product, price=product.price, size=size)
+                
+        if created:
+            cart.orders.add(order)
+            cart.save()
+        else:
+            order.price += product.price
+            order.quantity += 1
+            order.save()
 
-    if created:
-        cart.orders.add(order)
-        cart.save()
-    else:
-        order.price += product.price
-        order.quantity += 1
-        order.save()
-    
     return redirect(reverse("product", kwargs={"slug":slug}))
 
 def cart(request):

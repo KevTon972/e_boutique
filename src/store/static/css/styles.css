@@ -99,7 +99,7 @@
 .product img{
     margin-top: 9vh;
     margin-bottom: 5vh;
-    max-height: 230px;
+    height: 234px;
     width: 346px;
     border: 2px solid black;
     border-radius: 10px;
@@ -151,12 +151,15 @@ footer{
     align-items: center;
 }
 
-.size{
+.button{
+    display: flex;
     margin-left: 20px;
-    padding: 5px;
+    padding: 10px;
     border: 2px solid black;
     border-radius: 10px;
-    height: 19px;
+    height: 30px;
+    align-items: center;
+    cursor: pointer;
 }
 
 .en-stock h3{

@@ -16,11 +16,14 @@
             <h3>Taille disponible:</h3>
             <div class="all-size">
                 {% for size in sizes %}
-                <div class="size">
-                    <button id="{{size}}" type="submit" onclick="RequeteAjax()">
+                    <!-- <button id="{{size}}" class= "button" type="submit" onclick="RequeteAjax()">
                         {{ size }}
-                    </button>
-                </div>
+                    </button> -->
+                    <form action="" method="GET">
+                        {% csrf_token %}
+                        <input type="button" id="{{size}}" class= "button" value="{{size}}" onclick="RequeteAjax()">
+                    </form>
+                    
             {% endfor %}
             </div>
         <div class="en-stock">

@@ -28,9 +28,6 @@ def login_user(request):
             
     return render(request, 'accounts/connexion.html')
 
-
-
-
 def logout_user(request):
     logout(request)
     return redirect('index')
