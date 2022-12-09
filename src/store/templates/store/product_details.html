@@ -31,7 +31,7 @@
         </div>
         {% if user.is_authenticated %}
         <div class="panier">
-            <a href="{% url 'add_to_cart' product.slug %}">
+            <a href="{{ product.get_absolute_url }}">
                 Ajouter dans le panier
             </a>
         </div>  

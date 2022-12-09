@@ -18,14 +18,15 @@ def product_details(request, slug):
      
 
 def add_to_cart(request, slug):
-    #size = get_object_or_404(Size, size=size)
     if request.method == "GET":
-        size = request.GET.get('button.id')
         user = request.user
-        product = get_object_or_404(Product, slug=slug,)
+        ajax_response = request.GET.get('size')
+        size = get_object_or_404(Size, size=ajax_response)
+        product = get_object_or_404(Product, slug=slug)
+
         cart, _ = Cart.objects.get_or_create(user=user)   
         order, created = Order.objects.get_or_create(user=user, product=product, price=product.price, size=size)
-                
+
         if created:
             cart.orders.add(order)
             cart.save()
@@ -33,12 +34,12 @@ def add_to_cart(request, slug):
             order.price += product.price
             order.quantity += 1
             order.save()
+        
 
     return redirect(reverse("product", kwargs={"slug":slug}))
 
 def cart(request):
     cart = get_object_or_404(Cart, user=request.user)    
-    #products = Product.objects.all()
     if cart:
         total_price = 0
         for order in cart.orders.all():

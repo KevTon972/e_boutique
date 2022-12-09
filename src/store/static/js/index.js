@@ -1,23 +1,22 @@
 function RequeteAjax(){
 
-    $('.button').click(function() {
-        
-        var button_id = $(this).attr('id');
-        console.log(button_id)
-    $.ajax({
-      type: 'GET',           
-      url : 'add-to-cart', 
-      datatype: "json",
-      data:{
-        'size': button_id 
-      },
-      success: function(response){
-        let data = JSON.stringify(data);
-        console.log(data)
-      },
-      error: function(){
-        console.log('pas ok')
-      }
+    $('.button').ready(function() {   
+      var button_id = $('.button').attr('id');
+
+      $.ajax({
+        type: 'GET',           
+        url : 'add-to-cart/',
+        datatype: "json",
+        data:{
+          'size': button_id 
+        },
+        success: function(){
+          console.log('Success')
+        },
+        error: function(){
+          console.log('Not a Success')
+        }
    });
   });
 };    
+
