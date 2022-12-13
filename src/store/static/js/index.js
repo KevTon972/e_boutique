@@ -1,22 +1,41 @@
-function RequeteAjax(){
+var arr = []
+let elementClicked = false
+var buttons = document.getElementsByClassName('button');
 
-    $('.button').ready(function() {   
-      var button_id = $('.button').attr('id');
+for (i = 0; i < buttons.length; i++) {
+   
+  $(buttons[i]).click(function(){
+    elementClicked = true
+    var button_id = $(this).attr('id');
+    arr.push(button_id)
+    
+    if(elementClicked) {
+      $(this).css('border-color', 'black');
+      elementClicked = false
+      return;
+    }
+  })
+  }
 
-      $.ajax({
-        type: 'GET',           
-        url : 'add-to-cart/',
-        datatype: "json",
-        data:{
-          'size': button_id 
-        },
-        success: function(){
-          console.log('Success')
-        },
-        error: function(){
-          console.log('Not a Success')
-        }
-   });
-  });
-};    
+$('.add_cart').click(function(){
+  console.log(arr)
+  $.ajax({
+    type: 'GET',           
+    url : 'add-to-cart/',
+    datatype: "json",
+    data:{
+      'size': arr[arr.length-1]
+    },
+    success: function(){
+      console.log('success')
+    },
+    error: function(){
+      console.log('Not a Success')
+    }
+  })
+})
+    
+
+
+
 

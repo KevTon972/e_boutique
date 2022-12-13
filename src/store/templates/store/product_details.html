@@ -21,7 +21,7 @@
                     </button> -->
                     <form action="" method="GET">
                         {% csrf_token %}
-                        <input type="button" id="{{size}}" class= "button" value="{{size}}" onclick="RequeteAjax()">
+                        <input type="button" id="{{size}}" class= "button" value="{{size}}">
                     </form>
                     
             {% endfor %}
@@ -31,7 +31,7 @@
         </div>
         {% if user.is_authenticated %}
         <div class="panier">
-            <a href="{{ product.get_absolute_url }}">
+            <a class="add_cart " href="">
                 Ajouter dans le panier
             </a>
         </div>  

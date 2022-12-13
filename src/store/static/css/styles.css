@@ -4,15 +4,18 @@
     font-family: 'Libre Baskerville', serif;
     margin: 0 auto;
     text-decoration: none;
+    position: relative;
 }
 .nav{
-    margin-bottom: 6vh;
+
 }
 .nav .top{
     display: flex;
     align-items: center;
     padding: 35px;
     background-color: black;
+    height: 50px;
+    margin-bottom: 17vh;
 }
 
 .nav .top a{
@@ -30,7 +33,7 @@
 
 .nav .top h2{
     color: white;
-    margin-right: 50px;
+    margin-right: 25px;
 }
 
 .top-left{
@@ -43,10 +46,12 @@
     margin-right: 0;
     align-items: center;
     flex-wrap: wrap;
-
 }
 
 .top-right a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid whitesmoke;
     border-radius: 20px;
     padding: 8px;
@@ -114,7 +119,9 @@
 footer{
     background-color: black;
     margin-top: 10vh;
-    height: 320px;
+    height: 220px;
+    position: relative;
+    bottom: 0;
 }
 
 .all{
@@ -123,7 +130,6 @@ footer{
 }
 
 .product-details{
-    margin-top: 10vh;
     display: flex;
     flex-wrap: wrap;
 }
@@ -154,12 +160,14 @@ footer{
 .button{
     display: flex;
     margin-left: 20px;
-    padding: 10px;
-    border: 2px solid black;
+    padding: 12px;
+    padding-bottom: 27px;
+    border: 2px solid grey;
     border-radius: 10px;
     height: 30px;
     align-items: center;
     cursor: pointer;
+    background-color: white;
 }
 
 .en-stock h3{
@@ -238,7 +246,6 @@ footer{
     box-shadow: 0 5px 50px rgba(0,0,0,0.15);
     border: 2px solid black;
     align-items: center;
-
 }
 
 thead tr{
@@ -300,7 +307,8 @@ td a{
 .empty_cart{
     display: flex;
     justify-content: center;
-    margin: 25vh;
+    margin-bottom: 41.5vh;
+
 }
 
 .all h2{
@@ -309,29 +317,6 @@ td a{
     text-decoration: underline whitesmoke;
 }
 
-.contact_mail h2{
-    margin-top: 50px;
-}
-
-.facebook{
-    text-align: center;
-    margin-top: 7px;
-}
-
-.instagram{
-    text-align: center;
-}
-
-.snap{
-    text-align: center;
-}
-
-.social img{
-    background-color: whitesmoke;
-    border-radius: 15px;
-    height: 70px;
-    margin: 5px;
-}
 
 @media only screen and (max-width: 1168px){
 
