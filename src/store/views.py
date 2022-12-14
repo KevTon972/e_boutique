@@ -7,18 +7,15 @@ from django.http import JsonResponse
 
 def index(request):
     products = Product.objects.all()
-
     return render(request, 'store/index.html', context={'products': products})
 
 def product_details(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    sizes = Size.objects.all()
-        
+    sizes = Size.objects.all()        
     return render(request, 'store/product_details.html', context={'product': product, 'sizes': sizes})
      
-
 def add_to_cart(request, slug):
-    if request.method == "GET":
+    if request.is_ajax():
         user = request.user
         ajax_response = request.GET.get('size')
         size = get_object_or_404(Size, size=ajax_response)
@@ -34,8 +31,7 @@ def add_to_cart(request, slug):
             order.price += product.price
             order.quantity += 1
             order.save()
-        
-
+            
     return redirect(reverse("product", kwargs={"slug":slug}))
 
 def cart(request):
@@ -46,7 +42,6 @@ def cart(request):
             total_price += order.price
 
         return render(request, 'store/cart.html', context={"orders":cart.orders.all(), "total_price": total_price})
-
 
 def delete_cart(request):
     # delete the cart
